@@ -32,14 +32,14 @@ app.post('/users', (req, res) => {
     });
 });
 
-app.get("/servived", (req, res) => {
-    db.query('SELECT * FROM servived', (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        res.json(results);
-    });
-});
+// app.get("/servived", (req, res) => {
+//     db.query('SELECT * FROM servived', (err, results) => {
+//         if (err) {
+//             return res.status(500).json({ error: err.message });
+//         }
+//         res.json(results);
+//     });
+// });
 
 app.listen(5000, () => {
     console.log("🚀 Server running on http://localhost:5000");
