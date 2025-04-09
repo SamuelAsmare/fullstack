@@ -24,7 +24,7 @@ function App() {
     e.preventDefault();
     console.log("Submitting:", { name, email, phone });
     try {
-      const res = await axios.post('http://localhost:5000/users', {
+      const res = await axios.post('https://fullstack-kxni.onrender.com/users', {
         name,
         email,
         phone
