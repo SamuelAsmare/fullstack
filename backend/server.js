@@ -2,10 +2,11 @@ const express = require("express");
 const mysql = require("mysql2");
 const cors = require('cors');
 const app = express();
-app.use(cors({
-  origin: 'https://samfulldep.netlify.app', // Your frontend URL
-}));
+// app.use(cors({
+//   origin: 'https://samfulldep.netlify.app', // Your frontend URL
+// }));
 
+ app.use(cors()); // 👈 allow requests from other origins
 app.use(express.json());
 
 const db = mysql.createConnection({
@@ -34,15 +35,7 @@ app.post('/users', (req, res) => {
     });
 });
 
-// app.get("/servived", (req, res) => {
-//     db.query('SELECT * FROM servived', (err, results) => {
-//         if (err) {
-//             return res.status(500).json({ error: err.message });
-//         }
-//         res.json(results);
-//     });
-// });
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-app.listen(5000, () => {
-    console.log("🚀 Server running on http://localhost:5000");
-});
+
