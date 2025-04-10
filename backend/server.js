@@ -6,7 +6,9 @@ const app = express();
 //   origin: 'https://samfulldep.netlify.app', // Your frontend URL
 // }));
 
- app.use(cors()); // 👈 allow requests from other origins
+  app.use(cors({
+  origin: 'https://samfulldep.netlify.app', // Replace with your actual Netlify URL
+})); // 👈 allow requests from other origins
 app.use(express.json());
 
 const db = mysql.createConnection({
