@@ -99,7 +99,7 @@ const App = () => {
       <div id="large">
         <form id="formm" onSubmit={hand}>
           <input type="text" placeholder="Your name"/>
-          <input type="email" placeholder="eg, samuelasmare19@gmail.com" />
+          <input type="email" placeholder="eg. s@gmail.com" />
           <button type="submit">Click It</button>
         </form>
       </div>
