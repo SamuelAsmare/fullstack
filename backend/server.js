@@ -11,6 +11,10 @@ const app = express();
 })); // 👈 allow requests from other origins
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('✅ Server is alive and responding to GET /');
+});
+
 const db = mysql.createConnection({
     host: "sql3.freesqldatabase.com",
     user: "sql3771460",
@@ -23,7 +27,7 @@ db.connect((err) => {
         console.error('Error connecting to database:', err);
         return;
     }
-    console.log('✅ Connected to MySQL database');
+    console.log('✅ You did it sam .. Connected to MySQL database');
 });
 
 app.post('/users', (req, res) => {
