@@ -11,7 +11,7 @@ const App = () => {
     e.preventDefault();
     console.log("Submitting:", { name, email, phone });
     try {
-      const res = await axios.post('https://fullstack-2-j8aa.onrender.com/users', {
+      const res = await axios.post('https://fullstack-1-gz3x.onrender.com/users', {
         name,
         email,
         phone
