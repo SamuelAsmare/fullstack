@@ -2,17 +2,21 @@ const express = require("express");
 const mysql = require("mysql2");
 const cors = require('cors');
 const app = express();
-// app.use(cors({
-//   origin: 'https://samfulldep.netlify.app', // Your frontend URL
-// }));
 
-  app.use(cors({
-  origin: 'https://samfulldep.netlify.app', // Replace with your actual Netlify URL
-})); // 👈 allow requests from other origins
+// CORS Setup (you can uncomment for specific domain)
+app.use(cors({
+  origin: 'https://samfulldep.netlify.app', // Your frontend URL
+}));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('✅ Server is alive and responding to GET /');
+});
+
+// Add a health check route
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
 });
 
 const db = mysql.createConnection({
@@ -27,7 +31,7 @@ db.connect((err) => {
         console.error('Error connecting to database:', err);
         return;
     }
-    console.log('✅ You did it sam .. Connected to MySQL database');
+    console.log('✅ Sam, dont worry, Connected to MySQL database');
 });
 
 app.post('/users', (req, res) => {
@@ -41,7 +45,6 @@ app.post('/users', (req, res) => {
     });
 });
 
-const PORT = process.env.PORT || 5000;
+// Use Render-assigned port, or default to 10000
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
